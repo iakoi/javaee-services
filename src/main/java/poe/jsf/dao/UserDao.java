@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UserDao {
 
-    @PersistenceContext(unitName = "poe-persistence-unit")
+    @PersistenceContext(unitName = "persistence-unit-h2")
     private EntityManager em;
 
     public void add(User user) {
