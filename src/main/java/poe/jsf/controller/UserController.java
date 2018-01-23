@@ -34,7 +34,7 @@ public class UserController implements Serializable {
 
     public String delete(Long userId) {
         userDao.delete(userId);
-        return "list-users";
+        return "list";
     }
 
     public String showUpdatePage(Long userId) {
@@ -52,7 +52,7 @@ public class UserController implements Serializable {
     public String update() {
         System.out.println("this.user id " + this.user.getId());
         userDao.update(this.user);
-        return "list-users";
+        return "list";
     }
 
     public User getUser() {
