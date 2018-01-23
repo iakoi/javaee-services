@@ -29,3 +29,5 @@ target/
 .classpath
 .DS_Store
 out/
+.metadata/
+
