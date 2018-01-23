@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean
 @RequestScoped
@@ -27,17 +28,15 @@ public class UserController implements Serializable {
         userDao.add(user);
     }
 
-    public String show() {
-        System.out.println("user in form ");
-        System.out.println(user.getEmail());
-        System.out.println(user.getPassword());
-
-        // enregistrer le user en bdd
-        // afficher à l'utilisateur qu'on a bien pris
-        // en compte son inscription
-
-        return "home";
+    public List<User> list() {
+        return userDao.list();
     }
+
+    public String delete(Long userId) {
+        userDao.delete(userId);
+        return "list-users";
+    }
+
     public User getUser() {
         return user;
     }
@@ -46,11 +45,4 @@ public class UserController implements Serializable {
         this.user = user;
     }
 
-    public UserDao getUserDao() {
-        return userDao;
-    }
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
 }

@@ -4,10 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 
-@ManagedBean
-@RequestScoped
 @Entity
-@Table
 public class User {
 
     @Id
