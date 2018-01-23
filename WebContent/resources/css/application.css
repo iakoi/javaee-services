@@ -1,0 +1,6 @@
+.table {
+    background: none;
+}
+.table thead td, .table thead th {
+    color: white;
+}

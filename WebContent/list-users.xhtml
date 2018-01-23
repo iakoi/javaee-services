@@ -3,24 +3,54 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsp/jstl/core"
 >
 
-<h:body>
-    <h:form>
-        <h:dataTable value="#{userController.list()}" var="user">
-            <h:column>
-                <strong>#{user.id}</strong>
-            </h:column>
-            <h:column>
-                <strong>#{user.email}</strong>
-            </h:column>
-            <h:column>
-                <h:commandButton value="delete" action="#{userController.delete(user.id)}"/>
-            </h:column>
-            <h:column>
-                <h:commandButton value="edit" action="#{userController.showUpdatePage(user.id)}"/>
-            </h:column>
-        </h:dataTable>
-    </h:form>
-</h:body>
+<ui:composition template="template/layout.xhtml">
+    <ui:define name="content">
+
+        <h:body>
+
+            <h1 class="title">Users List</h1>
+
+            <h:form>
+                <table class="table is-fullwidth">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:forEach items="#{userController.list()}" var="user">
+
+                        <tr>
+                            <th>
+                                #{user.id}
+                            </th>
+                            <td>
+                                #{user.email}
+                            </td>
+                            <td>
+                                <div class="columns">
+                                    <div class="column is-2">
+                                        <h:commandButton class="button is-primary is-inverted is-outlined "
+                                                         value="delete"
+                                                         action="#{userController.delete(user.id)}"/>
+                                    </div>
+                                    <div class="column is-2">
+                                        <h:commandButton class="button is-primary is-inverted is-outlined " value="edit"
+                                                         action="#{userController.showUpdatePage(user.id)}"/>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </f:forEach>
+                    </tbody>
+                </table>
+            </h:form>
+        </h:body>
+    </ui:define>
+</ui:composition>
 </html>

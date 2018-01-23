@@ -7,45 +7,29 @@
 
 <ui:composition template="template/layout.xhtml">
     <ui:define name="content">
+
         <h:body>
-            <section class="hero is-medium is-primary is-bold is-fullheight">
-                <div class="hero-body">
 
-                    <div class="container">
-                        <h1 class="title">
-                            Java EE 7
-                        </h1>
-                        <h2 class="subtitle">
-                            services
-                        </h2>
-
-                        <section class="section">
-                            <div class="container">
-
-                                <h:form class="form">
-                                    <div class="field">
-                                        <h:outputLabel class="label" value="email: "/>
-                                        <h:inputText class="input" id="email" value="#{userController.user.email}"
-                                                     required="true"
-                                                     binding="#{varName}">
-                                        </h:inputText>
-                                        <h:message for="email"/>
-                                    </div>
-                                    <div class="field">
-                                        <h:outputLabel class="label" value="Password: "/>
-                                        <h:inputText class="input" id="password" value="#{userController.user.password}"
-                                                     required="true">
-                                        </h:inputText>
-                                        <h:inputHidden id="id" value="#{userController.user.id}"/>
-                                    </div>
-                                    <h:commandButton class="button is-primary is-inverted is-outlined  "
-                                                     action="#{userController.update()}" value="update"/>
-                                </h:form>
-                            </div>
-                        </section>
-                    </div>
+            <h1 class="title">Edit a User</h1>
+            <h:form class="form">
+                <div class="field">
+                    <h:outputLabel class="label" value="email: "/>
+                    <h:inputText class="input" id="email" value="#{userController.user.email}"
+                                 required="true"
+                                 binding="#{varName}">
+                    </h:inputText>
+                    <h:message for="email"/>
                 </div>
-            </section>
+                <div class="field">
+                    <h:outputLabel class="label" value="Password: "/>
+                    <h:inputText class="input" id="password" value="#{userController.user.password}"
+                                 required="true">
+                    </h:inputText>
+                    <h:inputHidden id="id" value="#{userController.user.id}"/>
+                </div>
+                <h:commandButton class="button is-primary is-inverted is-outlined  "
+                                 action="#{userController.update()}" value="update"/>
+            </h:form>
         </h:body>
     </ui:define>
 </ui:composition>

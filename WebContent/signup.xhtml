@@ -11,22 +11,26 @@
 
         <h:body>
 
+            <h1 class="title">User Creation</h1>
             <h:form>
-                <div>
-                    <h:outputLabel value="email: "/>
-                    <h:inputText id="email" value="#{userController.user.email}" required="true" binding="#{varName}">
-                    </h:inputText>
+                <div class="field">
+                    <h:outputLabel class="label" value="Email"/>
+                    <div class="control">
+                        <h:inputText class="input is-" id="email" value="#{userController.user.email}" required="true"
+                                     binding="#{varName}">
+                        </h:inputText>
+                    </div>
                     <h:message for="email"/>
                 </div>
-                <div>
-                    <h:outputLabel value="Password: "/>
-                    <h:inputSecret id="password" value="#{userController.user.password}" required="true">
-                    </h:inputSecret>
+                <div class="field">
+                    <h:outputLabel class="label" value="Password"/>
+                    <div class="control">
+                        <h:inputSecret class="input" id="password" value="#{userController.user.password}" required="true">
+                        </h:inputSecret>
+                    </div>
                 </div>
-                <h:commandButton action="#{userController.add()}" value="sign up"/>
-
+                <h:commandButton class="button is-primary is-inverted is-outlined" action="#{userController.add()}" value="sign up"/>
             </h:form>
-            <h:link value="list" outcome="list-users"/>
         </h:body>
     </ui:define>
 </ui:composition>
