@@ -31,3 +31,4 @@ target/
 out/
 .metadata/
 
+/bin/

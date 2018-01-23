@@ -9,17 +9,19 @@
     <h:form>
         <div>
             <h:outputLabel value="Nom: "/>
-            <h:inputText id="name" value="#{userController.user.email}" required="true" binding="#{varName}">
+            <h:inputText id="name" value="#{userController.user.email}" >
             </h:inputText>
             <h:message for="name"/>
         </div>
         <div>
             <h:outputLabel value="Prenom: "/>
-            <h:inputText id="surname" value="#{userController.user.password}" required="true">
+            <h:inputText id="surname" value="#{userController.user.password}">
                 <f:attribute name="attributeName" value="#{varName}"/>
             </h:inputText>
         </div>
-        <h:commandButton value="Add" action="#{userController.add}"/>
+        <!--<h:commandButton value="Add" action="home"/>-->
+        <h:commandButton value="Add" action="#{userController.showPageHome(userController.user)}"/>
+
     </h:form>
 </h:body>
 </html>

@@ -37,6 +37,24 @@ public class UserController implements Serializable {
         return "list-users";
     }
 
+    public String showUpdatePage(Long userId) {
+        this.user = userDao.get(userId);
+        //context.view.addModel(user);
+        return "update";
+    }
+
+    public String showPageHome(User user) {
+        System.out.println("showPageHome" + this.user.getEmail());
+        System.out.println("showPageHome" + user.getEmail());
+        return "home";
+    }
+
+    public String update() {
+        System.out.println("this.user id " + this.user.getId());
+        userDao.update(this.user);
+        return "list-users";
+    }
+
     public User getUser() {
         return user;
     }

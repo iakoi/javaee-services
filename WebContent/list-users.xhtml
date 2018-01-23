@@ -17,6 +17,9 @@
             <h:column>
                 <h:commandButton value="delete" action="#{userController.delete(user.id)}"/>
             </h:column>
+            <h:column>
+                <h:commandButton value="edit" action="#{userController.showUpdatePage(user.id)}"/>
+            </h:column>
         </h:dataTable>
     </h:form>
 </h:body>
