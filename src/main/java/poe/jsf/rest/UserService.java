@@ -1,6 +1,8 @@
 package poe.jsf.rest;
 
+import poe.jsf.dao.TrackDao;
 import poe.jsf.dao.UserDao;
+import poe.jsf.domain.Track;
 import poe.jsf.domain.User;
 
 import javax.ejb.EJB;
@@ -16,6 +18,9 @@ public class UserService {
 
     @EJB
     private UserDao userDao;
+
+    @EJB
+    private TrackDao trackDao;
 
     @GET
     @Produces("application/json")
@@ -54,4 +59,11 @@ public class UserService {
         return userDao.list();
     }
 
+    @POST
+    @Path("playlist/add/{userId}/{trackId}")
+    public void addTrack(@PathParam("userId") Long userId, @PathParam("trackId") Long trackId) {
+
+        userDao.addTrack(userId, trackId);
+
+    }
 }

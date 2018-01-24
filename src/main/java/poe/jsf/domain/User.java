@@ -1,8 +1,8 @@
 package poe.jsf.domain;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,6 +16,9 @@ public class User {
 
     @Column
     private String password;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    private List<Track> tracks;
 
     public User() {
     }
@@ -42,5 +45,13 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Track> getTracks() {
+        return tracks == null ? new ArrayList<>() : tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
     }
 }

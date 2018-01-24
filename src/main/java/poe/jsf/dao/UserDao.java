@@ -1,8 +1,10 @@
 package poe.jsf.dao;
 
 
+import poe.jsf.domain.Track;
 import poe.jsf.domain.User;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,6 +15,9 @@ public class UserDao {
 
     @PersistenceContext(unitName = "persistence-unit-h2")
     private EntityManager em;
+
+    @EJB
+    TrackDao trackDao;
 
     public Long add(User user) {
         System.out.println("em: " + em);
@@ -33,6 +38,7 @@ public class UserDao {
         System.out.println("update user : " + user.getId());
         user = em.merge(user);
     }
+
     public void deleteEntity(User userToDelete) {
         em.remove(userToDelete);
     }
@@ -40,6 +46,13 @@ public class UserDao {
     public User get(Long userId) {
         return em.find(User.class, userId);
 
+    }
+
+    public void addTrack(Long userId, Long trackId) {
+        User user = get(userId);
+        Track track = trackDao.get(trackId);
+        user.getTracks().add(track);
+        em.persist(user);
     }
 
 }
