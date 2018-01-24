@@ -23,9 +23,11 @@ public class UserController implements Serializable {
         user = new User();
     }
 
-    public void add() {
+    public String add() {
         System.out.println("adding user " + user.getEmail());
         userDao.add(user);
+        user = new User();
+        return "signup";
     }
 
     public List<User> list() {

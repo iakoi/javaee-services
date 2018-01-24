@@ -14,9 +14,10 @@ public class UserDao {
     @PersistenceContext(unitName = "persistence-unit-h2")
     private EntityManager em;
 
-    public void add(User user) {
+    public Long add(User user) {
         System.out.println("em: " + em);
         em.persist(user);
+        return user.getId();
     }
 
     public List<User> list() {
