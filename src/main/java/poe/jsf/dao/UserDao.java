@@ -52,7 +52,9 @@ public class UserDao {
         User user = get(userId);
         Track track = trackDao.get(trackId);
         user.getTracks().add(track);
+        track.getUsers().add(user);
+        System.out.println("user tracks + " + user.getTracks().size());
         em.persist(user);
+        System.out.println("user tracks + " + user.getTracks().size());
     }
-
 }

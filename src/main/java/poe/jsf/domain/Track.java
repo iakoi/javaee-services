@@ -1,7 +1,6 @@
 package poe.jsf.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +16,7 @@ public class Track {
     private String artist;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> users = new ArrayList<>();
+    private List<User> users;
 
     public Long getId() {
         return id;

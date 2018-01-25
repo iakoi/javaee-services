@@ -17,7 +17,7 @@ public class User {
     @Column
     private String password;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Track> tracks;
 
     public User() {
@@ -48,7 +48,10 @@ public class User {
     }
 
     public List<Track> getTracks() {
-        return tracks == null ? new ArrayList<>() : tracks;
+        if (tracks == null) {
+            setTracks(new ArrayList<Track>());
+        }
+        return tracks;
     }
 
     public void setTracks(List<Track> tracks) {

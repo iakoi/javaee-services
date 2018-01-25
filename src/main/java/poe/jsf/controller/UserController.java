@@ -3,6 +3,7 @@ package poe.jsf.controller;
 import poe.jsf.dao.UserDao;
 import poe.jsf.domain.User;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -19,8 +20,15 @@ public class UserController implements Serializable {
     @EJB
     private UserDao userDao;
 
+    private List<User> users;
+
     public UserController() {
         user = new User();
+    }
+
+    @PostConstruct
+    public void init() {
+        users = userDao.list();
     }
 
     public String add() {
@@ -31,7 +39,7 @@ public class UserController implements Serializable {
     }
 
     public List<User> list() {
-        return userDao.list();
+        return users;
     }
 
     public String delete(Long userId) {
