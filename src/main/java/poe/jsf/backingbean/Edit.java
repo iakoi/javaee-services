@@ -32,15 +32,6 @@ public class Edit implements Serializable {
         user = new User();
     }
 
-    @PostConstruct
-    public void init() {
-//        Map<String, String> params =
-//                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-//
-//        userId = Long.getLong(params.get("userid"));
-//        this.user = userDao.get(userId);
-    }
-
     public String update() {
         System.out.println("this.user id " + this.user.getId());
         userDao.update(this.user);
