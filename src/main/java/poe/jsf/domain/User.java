@@ -17,7 +17,7 @@ public class User {
     @Column
     private String password;
 
-    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
     private List<Track> tracks;
 
     public User() {

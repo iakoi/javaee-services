@@ -57,4 +57,14 @@ public class UserDao {
         em.persist(user);
         System.out.println("user tracks + " + user.getTracks().size());
     }
+
+    public void deleteTrackFromUser(Long userId, Long trackId) {
+        System.out.println("deleteTrackFromUser user:" + userId + ", trackId: " + trackId);
+        User user = get(userId);
+        Track track = trackDao.get(trackId);
+        user.getTracks().remove(track);
+        track.getUsers().remove(user);
+        em.persist(user);
+
+    }
 }
