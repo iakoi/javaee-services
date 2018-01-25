@@ -1,4 +1,4 @@
-package poe.jsf.controller;
+package poe.jsf.backingbean;
 
 import poe.jsf.dao.UserDao;
 import poe.jsf.domain.User;
@@ -20,15 +20,19 @@ public class ListUser implements Serializable {
 
     private List<User> users;
 
+    public ListUser() {
+    }
+
     @PostConstruct
-    public void init() {
+    public void refreshUsers() {
         users = userDao.list();
     }
 
-
-
-
-
+    public String delete(Long userId) {
+        userDao.delete(userId);
+        refreshUsers();
+        return "list";
+    }
 
     public UserDao getUserDao() {
         return userDao;

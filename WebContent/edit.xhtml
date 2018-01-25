@@ -14,7 +14,7 @@
             <h:form class="form">
                 <div class="field">
                     <h:outputLabel class="label" value="email: "/>
-                    <h:inputText class="input" id="email" value="#{userController.user.email}"
+                    <h:inputText class="input" id="email" value="#{edit.user.email}"
                                  required="true"
                                  binding="#{varName}">
                     </h:inputText>
@@ -22,13 +22,13 @@
                 </div>
                 <div class="field">
                     <h:outputLabel class="label" value="Password: "/>
-                    <h:inputText class="input" id="password" value="#{userController.user.password}"
+                    <h:inputText class="input" id="password" value="#{edit.user.password}"
                                  required="true">
                     </h:inputText>
-                    <h:inputHidden id="id" value="#{userController.user.id}"/>
+                    <h:inputHidden id="id" value="#{edit.user.id}"/>
                 </div>
                 <h:commandButton class="button is-primary is-inverted is-outlined  "
-                                 action="#{userController.update()}" value="update"/>
+                                 action="#{edit.update()}" value="update"/>
             </h:form>
         </h:body>
     </ui:define>

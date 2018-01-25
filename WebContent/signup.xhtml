@@ -16,7 +16,7 @@
                 <div class="field">
                     <h:outputLabel class="label" value="Email"/>
                     <div class="control">
-                        <h:inputText class="input is-" id="email" value="#{userController.user.email}" required="true"
+                        <h:inputText class="input is-" id="email" value="#{signUp.user.email}" required="true"
                                      binding="#{varName}">
                         </h:inputText>
                     </div>
@@ -25,11 +25,11 @@
                 <div class="field">
                     <h:outputLabel class="label" value="Password"/>
                     <div class="control">
-                        <h:inputSecret class="input" id="password" value="#{userController.user.password}" required="true">
+                        <h:inputSecret class="input" id="password" value="#{signUp.user.password}" required="true">
                         </h:inputSecret>
                     </div>
                 </div>
-                <h:commandButton class="button is-primary is-inverted is-outlined" action="#{userController.add()}" value="sign up"/>
+                <h:commandButton class="button is-primary is-inverted is-outlined" action="#{signUp.add()}" value="sign up"/>
             </h:form>
         </h:body>
     </ui:define>

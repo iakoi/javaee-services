@@ -3,7 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
 >
 
 <ui:composition template="template/layout.xhtml">
@@ -23,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <f:foreach items="#{listuser.users}" var="user">
+                    <ui:repeat value="#{listUser.users}" var="user">
 
                         <tr>
                             <th>
@@ -35,18 +36,27 @@
                             <td>
                                 <div class="columns">
                                     <div class="column is-2">
-                                        <h:commandbutton class="button is-primary is-inverted is-outlined "
+                                        <h:commandButton class="button is-primary is-inverted is-outlined "
                                                          value="delete"
-                                                         action="#{usercontroller.delete(user.id)}"/>
+                                                         action="#{listUser.delete(user.id)}"/>
                                     </div>
                                     <div class="column is-2">
-                                        <h:commandbutton class="button is-primary is-inverted is-outlined " value="edit"
-                                                         action="#{usercontroller.showupdatepage(user.id)}"/>
+                                        <h:commandButton class="button is-primary is-inverted is-outlined " value="show"
+                                                         action="#{showUser.show()}">
+                                            <f:param name="userid" value="#{user.id}"/>
+                                        </h:commandButton>
                                     </div>
+                                    <div class="column is-2">
+                                        <h:commandButton class="button is-primary is-inverted is-outlined " value="edit"
+                                                         action="#{edit.show()}">
+                                            <f:param name="userid" value="#{user.id}"/>
+                                        </h:commandButton>
+                                    </div>
+
                                 </div>
                             </td>
                         </tr>
-                    </f:foreach>
+                    </ui:repeat>
                     </tbody>
                 </table>
             </h:form>
