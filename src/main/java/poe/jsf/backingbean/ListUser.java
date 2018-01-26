@@ -15,7 +15,6 @@ import java.util.List;
 public class ListUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @EJB
     private UserDao userDao;
 
     private List<User> users;

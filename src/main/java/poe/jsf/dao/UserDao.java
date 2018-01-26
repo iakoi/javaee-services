@@ -31,7 +31,6 @@ public class UserDao {
 
     public void delete(Long userId) {
         User userToDelete = em.find(User.class, userId);
-        em.remove(userToDelete);
     }
 
     public void update(User user) {

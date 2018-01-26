@@ -1,6 +1,8 @@
 package poe.jsf.backingbean;
 
+import poe.jsf.dao.TrackDao;
 import poe.jsf.dao.UserDao;
+import poe.jsf.domain.Track;
 import poe.jsf.domain.User;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean
 @RequestScoped
@@ -17,11 +20,17 @@ public class Edit implements Serializable {
 
     private User user;
 
+    private String[] tracksToAdd;
+
     @ManagedProperty("#{param.userid}")
     private Long userId;
 
     @EJB
     private UserDao userDao;
+
+    private TrackDao trackDao;
+
+    private List<Track> allTracks;
 
     public String show() {
         this.user = userDao.get(userId);
@@ -30,6 +39,11 @@ public class Edit implements Serializable {
 
     public Edit() {
         user = new User();
+    }
+
+    @PostConstruct
+    public void init() {
+        allTracks = trackDao.list();
     }
 
     public String update() {
@@ -60,5 +74,21 @@ public class Edit implements Serializable {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    public String[] getTracksToAdd() {
+        return tracksToAdd;
+    }
+
+    public void setTracksToAdd(String[] tracksToAdd) {
+        this.tracksToAdd = tracksToAdd;
+    }
+
+    public List<Track> getAllTracks() {
+        return allTracks;
+    }
+
+    public void setAllTracks(List<Track> allTracks) {
+        this.allTracks = allTracks;
     }
 }

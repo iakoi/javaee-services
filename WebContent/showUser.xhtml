@@ -28,8 +28,31 @@
                 <div class="field">
                     <h:outputLabel class="label" value="Tracks: "/>
                     <ui:repeat value="#{showUser.user.tracks}" var="track">
-                        <h:outputText value="#{track.title}"/>
-                        <h:outputText value="#{track.artist}"/>
+
+                        <table class="table is-fullwidth">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Artist</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>#{track.title}</td>
+                                <td>#{track.title}</td>
+                                <td>
+                                    <div class="columns">
+                                        <div class="column is-2">
+                                            <h:commandButton class="button is-primary is-inverted is-outlined "
+                                                             value="delete"
+                                                             action="#{showUser.delete(user.id)}"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </ui:repeat>
                 </div>
             </h:form>

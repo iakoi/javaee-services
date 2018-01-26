@@ -34,7 +34,7 @@ public class UserService {
     }
 
     @POST
-    @Path("/{email}/{password}")
+    @Path("/{mail}/{password}")
     public Response add(@PathParam("email") String email, @PathParam("password") String password, @Context UriInfo uriInfo) {
         User user = new User();
         user.setEmail(email);
