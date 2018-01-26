@@ -24,6 +24,7 @@ public class TrackService {
     @GET
     @Produces("application/json")
     @Path("{id}")
+    //FIXME erreur lors de la génération du json, boucle infinie: passer par un TO
     public Track show(@PathParam("id") Long trackId) {
         Track track = trackDao.get(trackId);
         System.out.println("the track to show " + track.getId());
