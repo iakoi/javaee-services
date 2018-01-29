@@ -44,7 +44,6 @@ public class UserDao {
 
     public User get(Long userId) {
         return em.find(User.class, userId);
-
     }
 
     public void addTrack(Long userId, Long trackId) {

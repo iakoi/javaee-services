@@ -2,6 +2,7 @@ package poe.jsf.rest;
 
 import poe.jsf.dao.TrackDao;
 import poe.jsf.domain.Track;
+import poe.jsf.rest.to.TrackTO;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -9,6 +10,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("track")
@@ -25,10 +27,11 @@ public class TrackService {
     @Produces("application/json")
     @Path("{id}")
     //FIXME erreur lors de la génération du json, boucle infinie: passer par un TO
-    public Track show(@PathParam("id") Long trackId) {
+    public TrackTO show(@PathParam("id") Long trackId) {
         Track track = trackDao.get(trackId);
+        TrackTO trackTo = TrackTO.buildFrom(track);
         System.out.println("the track to show " + track.getId());
-        return track;
+        return trackTo;
     }
 
     @POST
@@ -55,8 +58,12 @@ public class TrackService {
     }
 
     @GET
-    public List<Track> list() {
-        return trackDao.list();
+    public List<TrackTO> list() {
+        List<TrackTO> tracks = new ArrayList<>();
+        for (Track track : trackDao.list()) {
+            tracks.add(TrackTO.buildFrom(track));
+        }
+        return tracks;
     }
 
 }
